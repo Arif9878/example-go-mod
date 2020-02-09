@@ -3,11 +3,11 @@ package main
 import (
 	"io"
 	"net/http"
-)
-import (
+
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
-	"gopkg.in/alecthomas/kingpin.v2"
+  "gopkg.in/alecthomas/kingpin.v2"
+	"github.com/Arif9878/example-go-mod/utils"
 )
 
 func main() {
@@ -15,8 +15,6 @@ func main() {
 	kingpin.Parse()
 	r := mux.NewRouter()
 	r.HandleFunc("/", HomeHandler)
-	//r.HandleFunc("/products", ProductsHandler)
-	//r.HandleFunc("/articles", ArticlesHandler)
 	http.Handle("/", r)
 	logrus.Info(*port)
 	http.ListenAndServe("0.0.0.0:"+*port, r)
